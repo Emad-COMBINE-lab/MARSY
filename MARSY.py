@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import keras
 import keras.backend as K
 import tensorflow as tf
@@ -17,21 +11,14 @@ import numpy as np
 import pandas as pd
 
 
-# # Data
-
-# In[2]:
-
-
+### Data ###
 X_train = pd.read_csv('Sample_Train_Set.csv', delimiter = ',', index_col='Unnamed: 0').to_numpy()
 Y_train = pd.read_csv('Sample_Input_Targets.csv', delimiter = ',', index_col='Unnamed: 0').to_numpy()
 
 X_test = pd.read_csv('Sample_Test_Set.csv', delimiter = ',', index_col='Unnamed: 0').to_numpy()
 Y_test = pd.read_csv('Predictions_Sample.csv', delimiter = ',', index_col='Unnamed: 0').to_numpy()
 
-
-# In[3]:
-
-
+### Data formatting to fit MARSY's input requirements ###
 def data_preparation(X_tr, X_tst, pair_range):
     X_tr = []
     X_tst = []
@@ -62,11 +49,7 @@ def data_preparation(X_tr, X_tst, pair_range):
     return X_tr, X_tst    
 
 
-# # MARSY
-
-# In[4]:
-
-
+### Implementation of the MARSY model ###
 def MARSY(X_tr, Y_tr, param):
     #Encoder for Triple
     tuple_vec = Input(shape=(param[0]))
@@ -110,11 +93,7 @@ def MARSY(X_tr, Y_tr, param):
     return multitask_model 
 
 
-# # Parameters
-
-# In[5]:
-
-
+### Parameters ###
 triple_length = 8551
 pair_length = 3912
 dropout_encoders = 0.2
@@ -126,10 +105,7 @@ tol_stopping = 10
 param = [triple_length, pair_length, dropout_encoders, dropout_decoder, epochs, batch_size, tol_stopping]
 
 
-# # Training and Prediction Example
-
-# In[6]:
-
+### Training and Prediction Example ###
 
 training_set, testing_set = data_preparation(X_train, X_test, pair_length)
 trained_MARSY = MARSY(training_set, Y_train, param)
