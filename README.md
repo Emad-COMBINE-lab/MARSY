@@ -19,6 +19,15 @@ In order to run the MARSY.py code, Python 3.8 need to be installed. In addition,
 
 The input vector of each sample in the provided training and testing sets is the concatenation of both drugs' features (signature) and cancer cell line features (gene expression). The drug signature is represented by the first 3912 features (1956 features per drug) of the vector while the gene expression of the cell line is represented by the next 4639 features. To make MARSY as invariant as possible to the order of the drug features, each sample is provided twice with the order of each drug reversed. A visual explanation of the elements composing each sample is shown in the input sample [figure](Input_Sample.pdf).
 
+Example of input datasets:
+
+|  | 1956 drug signature features | 1956 drug signature features | 4639 gene expression features |
+| --- | --- | --- | --- |
+| Sample_1 | Drug 1| Drug 2 | Cell Line A |
+| Sample_2 | Drug 2 | Drug 1|  Cell Line A  |
+| Sample_3 | Drug 3| Drug 4 | Cell Line B  |
+| Sample_4 | Drug 4| Drug 3 | Cell Line B  |
+
 The MARSY [implementation](MARSY.py) contains a data prepartion function that converts the input samples into the required format used as input to the model. This format is designed such that MARSY can learn different embeddings from the input features using its two encoders as shown in the architecture [figure](Architecture_MARSY.pdf)
 
 ## Description of targets
