@@ -42,3 +42,9 @@ Example of targets for each sample:
 | Sample_2 | 2.80 | 0.09 |  -4.54 |
 | Sample_3 | 6.18| 29.12 | -30.99 |
 | Sample_4 | 6.18 | -30.99 |  29.12 |
+
+# Running MARSY
+
+The MARSY [file](MARSY.py) provided contains a basic implementation of MARSY. The code first reads the provided data files and then, uses a data preparation function that converts the input data sets into the appropriate format. It is also composed of the implementation of the deep multitask neural network. The parameters of this model are set in the code following our design choices. Finally, an implementation of the training and a prediction example are also added.
+
+To run the code, the script along with all the data files in this repository need to be in the same folder. The parameters of the model can be changed directly in the script.
